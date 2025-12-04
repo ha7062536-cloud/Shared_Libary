@@ -70,6 +70,7 @@ public class HttpRouter
 			{
 				res.StatusCode = (int)HttpStatusCode.NotImplemented;
 			}
+
 			res.Close();
 		}
 	}
@@ -85,6 +86,7 @@ public class HttpRouter
 	public HttpRouter UseRouter(string path, HttpRouter router)
 	{
 		router.basePath = this.basePath + path;
+
 		return Use(router.HandleAsync);
 	}
 
@@ -145,7 +147,6 @@ public class HttpRouter
 				Func<Task> routeMiddlewarePipeline = GenerateMiddlewarePipeline(req, res, props, middlewares.ToList());
 
 				await routeMiddlewarePipeline();
-
 				break; // or return; // To short-circuit global pipeline. 
 			}
 		}
