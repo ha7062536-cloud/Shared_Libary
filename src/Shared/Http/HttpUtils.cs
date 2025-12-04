@@ -13,7 +13,6 @@ using Shared.Config;
 
 public static class HttpUtils
 {
-	// <-- Rest of the code below goes here.
 	public static async Task StructuredLogging(HttpListenerRequest req, HttpListenerResponse res, Hashtable props, Func<Task> next)
 	{
 		var requestId = props["req.id"]?.ToString() ?? Guid.NewGuid().ToString("n").Substring(0, 12);
